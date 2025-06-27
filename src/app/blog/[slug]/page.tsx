@@ -1,3 +1,4 @@
+import { draftMode } from 'next/headers';
 import Link from 'next/link';
 
 import imageUrlBuilder from '@sanity/image-url';
@@ -21,10 +22,21 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+  const { isEnabled } = await draftMode();
   const post = await client.fetch<SanityDocument>(
     POST_QUERY,
-    await params,
-    options
+    { slug },
+
+    {
+      ...(isEnabled
+        ? {
+            perspective: 'previewDrafts',
+            useCdn: false,
+            stega: true,
+          }
+        : {}),
+    }
   );
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(550).height(310).url()
