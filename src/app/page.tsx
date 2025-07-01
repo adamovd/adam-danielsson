@@ -1,3 +1,4 @@
+import { draftMode } from 'next/headers';
 import Link from 'next/link';
 
 import { type SanityDocument } from 'next-sanity';
@@ -12,7 +13,21 @@ const POSTS_QUERY = `*[
 const options = { next: { revalidate: 30 } };
 
 export default async function IndexPage() {
-  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+  const { isEnabled } = await draftMode();
+  const posts = await client.fetch<SanityDocument[]>(
+    POSTS_QUERY,
+    {},
+    {
+      ...options,
+      ...(isEnabled
+        ? {
+            perspective: 'previewDrafts',
+            useCdn: false,
+            stega: true,
+          }
+        : {}),
+    }
+  );
 
   return (
     <main className="container mx-auto min-h-screen max-w-3xl p-8">

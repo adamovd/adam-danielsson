@@ -7,6 +7,10 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/page.tsx": "${dirname} - Page",
+    "**/app/**/layout.tsx": "${dirname} - Layout"
+  },
   "typescript.tsdk": "node_modules/typescript/lib",
   "better-comments.multilineComments": true
 }
