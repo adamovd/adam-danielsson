@@ -22,20 +22,6 @@ export const pageType = defineType({
       name: 'content',
       type: 'pageBuilder',
     }),
-    defineField({
-      name: 'icon',
-      type: 'image',
-      title: 'Icon',
-      description: 'Icon for the page, used in the navigation',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'backgroundColor',
-      title: 'Background color',
-      type: 'simplerColor',
-    }),
   ],
   preview: {
     select: {

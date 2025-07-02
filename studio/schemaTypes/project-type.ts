@@ -1,9 +1,11 @@
+import {ProjectsIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
 
 export const projectType = defineType({
   name: 'project',
   title: 'Project',
   type: 'document',
+  icon: ProjectsIcon as React.ComponentType,
   fields: [
     defineField({
       name: 'title',
