@@ -67,7 +67,7 @@ const MainNavigation = async ({ mainNavRef }: NavigationProps) => {
   const items: NavigationItem[] = mainNavigation?.items || [];
 
   return (
-    <nav className="bg-primary text-light inline-flex items-center justify-start gap-20 overflow-hidden rounded-[50px] px-12 py-6">
+    <nav className="bg-primary text-light fixed top-5 z-50 inline-flex items-center justify-start gap-20 overflow-hidden rounded-[50px] px-12 py-2 font-sans-medium">
       {items.map((item: NavigationItem, index) => (
         <ResolvedLink key={index} link={item.navigationItemUrl}>
           {item.text}

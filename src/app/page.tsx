@@ -1,7 +1,13 @@
+'use client';
+
+import { useSiteConfig } from '@/providers/sanity-provider';
+
 const Home = () => {
+  const siteConfig = useSiteConfig();
+
   return (
-    <main className="container mx-auto min-h-screen max-w-3xl bg-dark-100 p-8">
-      <h1 className="mb-8 text-4xl font-bold text-orange">Adam Danielsson</h1>
+    <main className="container min-h-screen p-8">
+      <h1 className="text-dark mb-8 font-serif text-4xl">Adam Danielsson</h1>
     </main>
   );
 };

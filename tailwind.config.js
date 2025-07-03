@@ -19,7 +19,7 @@ module.exports = {
         'sans-medium': ['Satoshi-Medium', 'ui-sans-serif', 'system-ui'],
         'sans-semibold': ['Satoshi-Bold', 'ui-sans-serif', 'system-ui'],
         'sans-bold': ['Satoshi-Black', 'ui-sans-serif', 'system-ui'],
-        serif: ['Analogist', 'ui-serif', 'Georgia'],
+        serif: ['Zodiak-Bold', 'ui-serif', 'Georgia'],
       },
     },
   },

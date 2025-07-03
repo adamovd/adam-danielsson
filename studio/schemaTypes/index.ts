@@ -1,5 +1,6 @@
 import {SchemaTypeDefinition} from 'sanity'
 import {authorType} from './author-type'
+import {buttonType} from './blocks/button-type'
 import {featuresType} from './blocks/features-type'
 import {galleryType} from './blocks/gallery-type'
 import {heroType} from './blocks/hero-type'
@@ -30,6 +31,7 @@ export const schema: {types: SchemaTypeDefinition[]} = {
     splitImageType,
     linkType,
     galleryType,
+    buttonType,
   ],
 }
 export default schema

@@ -9,5 +9,6 @@ export const pageBuilderType = defineType({
     defineArrayMember({type: 'features'}),
     defineArrayMember({type: 'gallery'}),
     defineArrayMember({type: 'link'}),
+    defineArrayMember({type: 'buttonGroup'}),
   ],
 })
