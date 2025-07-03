@@ -13,8 +13,6 @@ export default function ResolvedLink({
   children,
   className,
 }: ResolvedLinkProps) {
-  console.log('ResolvedLink', link, className);
-
   if (link?.href) {
     return (
       <Link

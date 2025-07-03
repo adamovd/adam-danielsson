@@ -29,8 +29,6 @@ const MainNavigation = async () => {
 
   const items: NavigationItem[] = mainNavigation?.items || [];
 
-  console.log(items);
-
   return (
     <nav className="flex space-x-4">
       {items.map((item: NavigationItem, index) => (

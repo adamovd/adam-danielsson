@@ -4,11 +4,16 @@ import { SanityDocument } from 'next-sanity';
 
 import { client } from '@/lib/sanity';
 
+interface PageProps {
+  params: Promise<{ slug?: string[] }>;
+}
+
 const PAGE_QUERY = `*[_type == "page" && slug.current == $slug][0]`;
 const options = { next: { revalidate: 30 } };
 
-const Page = async ({ params }: { params: { slug?: string[] } }) => {
-  const slug = (await params.slug?.join('/')) || 'home';
+const Page = async ({ params }: PageProps) => {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug?.join('/') || 'home';
   const { isEnabled } = await draftMode();
   const page = await client.fetch<SanityDocument>(
     PAGE_QUERY,
