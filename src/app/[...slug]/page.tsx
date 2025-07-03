@@ -8,7 +8,7 @@ interface PageProps {
   params: Promise<{ slug?: string[] }>;
 }
 
-const PAGE_QUERY = `*[_type == "page" && slug.current == $slug][0]`;
+const PAGE_QUERY = `*[_type == "page" && slug.current == $slug && _type != "blog" && _type != "project"][0]`;
 const options = { next: { revalidate: 30 } };
 
 const Page = async ({ params }: PageProps) => {
@@ -22,7 +22,7 @@ const Page = async ({ params }: PageProps) => {
       ...options,
       ...(isEnabled
         ? {
-            perspective: 'previewDrafts',
+            perspective: 'drafts',
             useCdn: false,
             stega: true,
           }
