@@ -13,6 +13,19 @@
  */
 
 // Source: schema.json
+export type ButtonGroup = {
+  _type: 'buttonGroup';
+  buttons?: Array<{
+    buttonText?: string;
+    link?: Link;
+    color?: 'primary' | 'secondary' | 'tertiary';
+    style?: 'outline' | 'filled';
+    size?: 'small' | 'medium' | 'large';
+    _type: 'button';
+    _key: string;
+  }>;
+};
+
 export type Gallery = {
   _type: 'gallery';
   images?: Array<{
@@ -103,25 +116,6 @@ export type NavigationItem = {
   navigationItemUrl?: Link;
 };
 
-export type Link = {
-  _type: 'link';
-  linkType?: 'href' | 'page' | 'post';
-  href?: string;
-  page?: {
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: 'page';
-  };
-  post?: {
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: 'post';
-  };
-  openInNewTab?: boolean;
-};
-
 export type PageBuilder = Array<
   | ({
       _key: string;
@@ -138,6 +132,9 @@ export type PageBuilder = Array<
   | ({
       _key: string;
     } & Link)
+  | ({
+      _key: string;
+    } & ButtonGroup)
 >;
 
 export type Category = {
@@ -206,6 +203,7 @@ export type Post = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt: string;
     _type: 'image';
   };
   body?: Array<{
@@ -310,6 +308,25 @@ export type Page = {
   title?: string;
   slug?: Slug;
   content?: PageBuilder;
+};
+
+export type Link = {
+  _type: 'link';
+  linkType?: 'href' | 'page' | 'post';
+  href?: string;
+  page?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'page';
+  };
+  post?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'post';
+  };
+  openInNewTab?: boolean;
 };
 
 export type HighlightColor = {
@@ -682,12 +699,12 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | ButtonGroup
   | Gallery
   | SplitImage
   | Hero
   | Features
   | NavigationItem
-  | Link
   | PageBuilder
   | Category
   | Project
@@ -696,6 +713,7 @@ export type AllSanitySchemaTypes =
   | SiteConfig
   | Navigation
   | Page
+  | Link
   | HighlightColor
   | TextColor
   | SimplerColor
