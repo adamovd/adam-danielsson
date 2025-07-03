@@ -8,19 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        green: '#009B72',
-        orange: '#F58F29',
-        purple: '#A4B0F5',
-        light: {
-          100: '#FFF8EB',
-          200: '#FFF1D6',
-          300: '#FFEBC2',
-          400: '#F8F4E3',
-        },
-        dark: {
-          100: '#0F1108',
-          200: '#30323D',
-        },
+        primary: '#1B00E3',
+        secondary: '#EEFC57',
+        light: '#F5E3E0',
+        dark: '#252323',
       },
       fontFamily: {
         sans: ['Space-Grotesk-Regular'],
