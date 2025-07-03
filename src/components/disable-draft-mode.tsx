@@ -9,6 +9,9 @@ export function DisableDraftMode() {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
+  if (typeof window === 'undefined') {
+    return null;
+  }
   if (window !== window.parent || !!window.opener) {
     return null;
   }

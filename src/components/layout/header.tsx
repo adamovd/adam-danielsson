@@ -1,9 +1,15 @@
+import { SiteConfig } from '@/types/sanity.types';
+
 import Navigation from './navigation';
 
-const Header = () => {
+interface HeaderProps {
+  siteConfig: SiteConfig;
+}
+
+const Header = ({ siteConfig }: HeaderProps) => {
   return (
-    <header>
-      <Navigation />
+    <header className="mt-4 flex items-center justify-center">
+      <Navigation mainNavRef={siteConfig.mainNav?._ref} />
     </header>
   );
 };
