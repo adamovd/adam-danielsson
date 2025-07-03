@@ -17,7 +17,7 @@ export default async function RootLayout({
   const siteConfig = (await getSiteConfig()) as SiteConfig;
   return (
     <html lang="en">
-      <body className="bg-light text-dark antialiased">
+      <body className="bg-light text-dark font-sans antialiased">
         <SanityProvider siteConfig={siteConfig}>
           <Header siteConfig={siteConfig} />
           {children}
