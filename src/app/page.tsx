@@ -7,7 +7,7 @@ const Home = () => {
 
   return (
     <main className="container min-h-screen p-8">
-      <h1 className="text-dark mb-8 font-serif text-4xl">Adam Danielsson</h1>
+      <h1 className="mb-8 font-serif text-4xl text-dark">Adam Danielsson</h1>
     </main>
   );
 };

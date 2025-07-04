@@ -1,5 +1,7 @@
 import React from 'react';
 
+import HeroComponent from '../ui/hero/hero';
+
 type BlocksType = {
   /* eslint-disable */
   [key: string]: React.FC<any>;
@@ -16,18 +18,20 @@ export type BlockProps = {
   block: BlockType;
 };
 
-const Blocks: BlocksType = {};
+const Blocks: BlocksType = {
+  hero: HeroComponent,
+};
 
 /**
  * Used by the <PageBuilder>, this component renders a the component that matches the block type.
  */
-export default function BlockRenderer({ block, index }: BlockProps) {
+const BlockRenderer = ({ block, index }: BlockProps) => {
   // Block does exist
   if (typeof Blocks[block._type] !== 'undefined') {
     return React.createElement(Blocks[block._type], {
       key: block._id,
-      block: block,
-      index: index,
+      ...block,
+      index,
     });
   }
   // Block doesn't exist yet
@@ -39,4 +43,6 @@ export default function BlockRenderer({ block, index }: BlockProps) {
     ),
     { key: block._id }
   );
-}
+};
+
+export default BlockRenderer;
