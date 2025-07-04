@@ -67,6 +67,16 @@ export default function CustomPortableText({
           </h2>
         );
       },
+      ul: ({ children }) => (
+        <ul className="my-4 list-disc space-y-2 pl-6 marker:text-primary">
+          {children}
+        </ul>
+      ),
+      ol: ({ children }) => (
+        <ol className="my-4 list-decimal space-y-2 pl-6 marker:text-primary">
+          {children}
+        </ol>
+      ),
     },
     marks: {
       link: ({ children, value: link }) => {
