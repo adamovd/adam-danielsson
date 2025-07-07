@@ -137,11 +137,11 @@ export default defineConfig({
     simplerColorInput({
       defaultColorFormat: 'rgba',
       defaultColorList: [
-        {label: 'Light', value: '#FFEBC2'},
-        {label: 'Dark', value: '#30323D'},
-        {label: 'Green', value: '#009B72'},
-        {label: 'Orange', value: '#F58F29'},
-        {label: 'Purple', value: '#A4B0F5'},
+        {label: 'Light', value: '#F5E3E0'},
+        {label: 'Dark', value: '#252323'},
+        {label: 'Primary', value: '#1B00E3'},
+        {label: 'Secondary', value: '#F58F29'},
+        {label: 'Tertiary', value: '#EEFC57'},
         {label: 'Custom...', value: 'custom'},
       ],
       enableSearch: true,
