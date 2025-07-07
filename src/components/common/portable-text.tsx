@@ -1,8 +1,4 @@
-import {
-  PortableText,
-  type PortableTextBlock,
-  type PortableTextComponents,
-} from 'next-sanity';
+import { PortableText, type PortableTextComponents } from 'next-sanity';
 
 import ResolvedLink from './resolved-link';
 
@@ -11,7 +7,7 @@ export default function CustomPortableText({
   value,
 }: {
   className?: string;
-  value: PortableTextBlock[];
+  value: any[]; // Accept any array for flexibility with Sanity data
 }) {
   const components: PortableTextComponents = {
     block: {
@@ -67,6 +63,7 @@ export default function CustomPortableText({
           </h2>
         );
       },
+      h3: ({ children }) => <h3 className="text-5xl font-bold">{children}</h3>,
       ul: ({ children }) => (
         <ul className="my-4 list-disc space-y-2 pl-6 marker:text-primary">
           {children}
@@ -78,10 +75,27 @@ export default function CustomPortableText({
         </ol>
       ),
     },
+
     marks: {
       link: ({ children, value: link }) => {
         return <ResolvedLink link={link}>{children}</ResolvedLink>;
       },
+      textColor: ({ children, value }) => (
+        <span style={{ color: value?.value || value?.hex || value?.color }}>
+          {children}
+        </span>
+      ),
+      highlightColor: ({ children, value }) => (
+        <span
+          style={{
+            backgroundColor: value?.value || value?.hex || value?.color,
+          }}
+        >
+          {children}
+        </span>
+      ),
+      strong: ({ children }) => <strong>{children}</strong>,
+      em: ({ children }) => <em>{children}</em>,
     },
   };
 

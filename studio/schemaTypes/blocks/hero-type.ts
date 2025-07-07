@@ -6,29 +6,60 @@ export const heroType = defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'title',
-      type: 'string',
-    }),
-    defineField({
       name: 'body',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [
+        {
+          type: 'block',
+          marks: {
+            annotations: [{type: 'textColor'}, {type: 'highlightColor'}],
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'verticalPosition',
+      type: 'string',
+      title: 'Vertical Position',
+      options: {
+        list: [
+          {title: 'Top', value: 'start'},
+          {title: 'Center', value: 'center'},
+          {title: 'Bottom', value: 'end'},
+        ],
+        layout: 'radio',
+      },
+    }),
+    defineField({
+      name: 'horizontalPosition',
+      type: 'string',
+      title: 'Horizontal Position',
+      options: {
+        list: [
+          {title: 'Left', value: 'start'},
+          {title: 'Center', value: 'center'},
+          {title: 'Right', value: 'end'},
+        ],
+        layout: 'radio',
+      },
     }),
     defineField({
       name: 'image',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
   ],
   icon: PresentationIcon as React.ComponentType,
   preview: {
     select: {
-      title: 'title',
       media: 'image',
     },
-    prepare({title, media}) {
+    prepare({media}) {
       return {
-        title,
-        subtitle: 'Hero',
+        title: 'Hero',
+
         media: media ?? PresentationIcon,
       }
     },
