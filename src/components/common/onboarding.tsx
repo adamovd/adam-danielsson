@@ -7,6 +7,8 @@
 import Link from 'next/link';
 
 export default function Onboarding() {
+  console.log('Onboarding component rendered');
+
   return (
     <div className="mx-auto grid max-w-2xl grid-flow-row gap-6 rounded-lg bg-red-500 p-8 py-12 text-center text-white">
       <svg

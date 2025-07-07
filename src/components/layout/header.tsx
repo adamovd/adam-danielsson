@@ -6,7 +6,7 @@ interface HeaderProps {
 
 const Header = ({ mainNavRef }: HeaderProps) => {
   return (
-    <header className="relative mt-4 flex items-center justify-center">
+    <header className="relative flex items-center justify-center">
       <Navigation mainNavRef={mainNavRef} />
     </header>
   );
